@@ -51,7 +51,7 @@ declare module "@anstec/earth-react" {
   /**
    * @description 聚合图层钩子
    * @param earthRef 地球实例Ref
-   * @param [options] 聚合图层构造参数
+   * @param [options] {@link Cluster.ConstructorOptions} 聚合图层构造参数
    * @returns 聚合图层Ref
    */
   export const useCluster: (
@@ -84,12 +84,13 @@ declare module "@anstec/earth-react" {
   export const useDrawTool: (earthRef: RefObject<Earth | null>) => RefObject<Draw | null>
   /**
    * @description 地球创建钩子
-   * @param earthRef 地球实例Ref
+   * @param containerRef 容器Ref
+   * @param [cesiumOptions] {@link Viewer.ConstructorOptions} `cesium` 构造参数
+   * @param [options] {@link Earth.ConstructorOptions} 地球实例构造参数
    * @returns 地球实例Ref
    */
   export const useEarth: (
     containerRef: RefObject<HTMLDivElement | null>,
-    id?: string,
     cesiumOptions?: Viewer.ConstructorOptions,
     options?: Earth.ConstructorOptions
   ) => RefObject<Earth | null>
@@ -115,7 +116,7 @@ declare module "@anstec/earth-react" {
   /**
    * @description 热力图钩子
    * @param earthRef 地球实例Ref
-   * @param [options] 热力图构造参数
+   * @param [options] {@link Heatmap.ConstructorOptions} 热力图构造参数
    * @returns 热力图Ref
    */
   export const useHeatmap: (
@@ -197,7 +198,7 @@ declare module "@anstec/earth-react" {
   /**
    * @description 风场、洋流钩子
    * @param earthRef 地球实例Ref
-   * @param options 风场、洋流构造参数
+   * @param options {@link WindField.ConstructorOptions} 风场、洋流构造参数
    * @returns 风场、洋流Ref
    */
   export const useWindField: (

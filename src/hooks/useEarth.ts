@@ -4,12 +4,11 @@ import { useEffect, useRef, type RefObject } from "react"
 
 export default (
   containerRef: RefObject<HTMLDivElement | null>,
-  id?: string,
   cesiumOptions?: Viewer.ConstructorOptions,
   options?: Earth.ConstructorOptions
 ) => {
   const earthRef = useRef<Earth | null>(null)
-  const realId = useRef(id ?? Utils.uuid())
+  const realId = useRef(Utils.uuid())
 
   useEffect(() => {
     if (!containerRef.current) return
