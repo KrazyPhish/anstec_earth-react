@@ -7,9 +7,6 @@ export default (earthRef: RefObject<Earth | null>) => {
   useEffect(() => {
     if (!earthRef.current) return
     measureRef.current = new Measure(earthRef.current)
-    return () => {
-      measureRef.current?.destroy()
-    }
   }, [])
 
   return measureRef

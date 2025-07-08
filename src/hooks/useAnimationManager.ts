@@ -7,9 +7,6 @@ export default (earthRef: RefObject<Earth | null>) => {
   useEffect(() => {
     if (!earthRef.current) return
     animationRef.current = new AnimationManager(earthRef.current)
-    return () => {
-      animationRef.current?.destroy()
-    }
   }, [])
 
   return animationRef

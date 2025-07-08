@@ -7,9 +7,6 @@ export default (earthRef: RefObject<Earth | null>) => {
   useEffect(() => {
     if (!earthRef.current) return
     drawRef.current = new Draw(earthRef.current)
-    return () => {
-      drawRef.current?.destroy()
-    }
   }, [])
 
   return drawRef

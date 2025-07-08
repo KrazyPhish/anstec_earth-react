@@ -7,9 +7,6 @@ export default (earthRef: RefObject<Earth | null>) => {
   useEffect(() => {
     if (!earthRef.current) return
     weatherRef.current = new Weather(earthRef.current)
-    return () => {
-      weatherRef.current?.destroy()
-    }
   }, [])
 
   return weatherRef

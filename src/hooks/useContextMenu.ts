@@ -7,9 +7,6 @@ export default (earthRef: RefObject<Earth | null>) => {
   useEffect(() => {
     if (!earthRef.current) return
     contextMenuRef.current = new ContextMenu(earthRef.current)
-    return () => {
-      contextMenuRef.current?.destroy()
-    }
   }, [])
 
   return contextMenuRef

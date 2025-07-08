@@ -1,4 +1,4 @@
-import { createEarth, recycleEarth, Utils, type Earth } from "@anstec/earth"
+import { createEarth, Utils, type Earth } from "@anstec/earth"
 import type { Viewer } from "cesium"
 import { useEffect, useRef, type RefObject } from "react"
 
@@ -9,17 +9,12 @@ export default (
   options?: Earth.ConstructorOptions
 ) => {
   const earthRef = useRef<Earth | null>(null)
+  const realId = useRef(id ?? Utils.uuid())
 
   useEffect(() => {
     if (!containerRef.current) return
-    const realId = id ?? Utils.uuid()
-    earthRef.current = createEarth(realId, containerRef.current, cesiumOptions, options)
-    return () => {
-      if (earthRef.current) {
-        recycleEarth(realId)
-      }
-    }
-  }, [containerRef])
+    earthRef.current = createEarth(realId.current, containerRef.current, cesiumOptions, options)
+  }, [])
 
   return earthRef
 }

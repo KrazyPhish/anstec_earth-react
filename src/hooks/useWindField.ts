@@ -7,9 +7,6 @@ export default (earthRef: RefObject<Earth | null>, options: WindField.Constructo
   useEffect(() => {
     if (!earthRef.current) return
     fieldRef.current = new WindField(earthRef.current, options)
-    return () => {
-      fieldRef.current?.destroy()
-    }
   }, [])
 
   return fieldRef

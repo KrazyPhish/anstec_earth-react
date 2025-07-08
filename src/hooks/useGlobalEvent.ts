@@ -7,9 +7,6 @@ export default (earthRef: RefObject<Earth | null>, delay?: number) => {
   useEffect(() => {
     if (!earthRef.current) return
     eventRef.current = new GlobalEvent(earthRef.current, delay)
-    return () => {
-      eventRef.current?.destroy()
-    }
   }, [])
 
   return eventRef
