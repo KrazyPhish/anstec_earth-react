@@ -7,6 +7,10 @@ export default <T>(earthRef: RefObject<Earth | null>) => {
   useEffect(() => {
     if (!earthRef.current) return
     layerRef.current = new RectangleLayer<T>(earthRef.current)
+    return () => {
+      layerRef.current?.destroy()
+      layerRef.current = null
+    }
   }, [])
 
   return layerRef

@@ -7,6 +7,10 @@ export default <T>(earthRef: RefObject<Earth | null>) => {
   useEffect(() => {
     if (!earthRef.current) return
     radarRef.current = new Radar<T>(earthRef.current)
+    return () => {
+      radarRef.current?.destroy()
+      radarRef.current = null
+    }
   }, [])
 
   return radarRef

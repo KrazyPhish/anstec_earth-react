@@ -7,6 +7,10 @@ export default (earthRef: RefObject<Earth | null>, options?: Cluster.Constructor
   useEffect(() => {
     if (!earthRef.current) return
     clusterRef.current = new Cluster(earthRef.current, options)
+    return () => {
+      clusterRef.current?.destroy()
+      clusterRef.current = null
+    }
   }, [])
 
   return clusterRef

@@ -7,6 +7,10 @@ export default <T>(earthRef: RefObject<Earth | null>) => {
   useEffect(() => {
     if (!earthRef.current) return
     coverRef.current = new Covering<T>(earthRef.current)
+    return () => {
+      coverRef.current?.destroy()
+      coverRef.current = null
+    }
   }, [])
 
   return coverRef

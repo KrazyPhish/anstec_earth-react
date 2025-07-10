@@ -7,6 +7,10 @@ export default <T>(earthRef: RefObject<Earth | null>) => {
   useEffect(() => {
     if (!earthRef.current) return
     sensorRef.current = new Sensor<T>(earthRef.current)
+    return () => {
+      sensorRef.current?.destroy()
+      sensorRef.current = null
+    }
   }, [])
 
   return sensorRef
