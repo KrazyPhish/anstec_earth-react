@@ -28,8 +28,8 @@ export default (): FC => {
     if (!earthRef.current) return
     //doing some job
     return () => {
-      //do not try to destroy or recycle the earth
-      //useEarth or other hooks will do it for you
+      //do not try to recycle the earth or destroy any other components
+      //useEarth hook or other components hooks will do it for you
     }
   }, [])
 
