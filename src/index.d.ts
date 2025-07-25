@@ -56,7 +56,7 @@ declare module "@anstec/earth-react" {
    */
   export const useCluster: (
     earthRef: RefObject<Earth | null>,
-    options: Cluster.ConstructorOptions
+    options?: Cluster.ConstructorOptions
   ) => RefObject<Cluster | null>
   /**
    * @description 上下文菜单钩子
