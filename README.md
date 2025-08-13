@@ -16,13 +16,12 @@ npm install @anstec/earth-react
 ```tsx
 // in your map module, when initializing the cesium viewer
 import { useEffect, useRef, type FC, type RefObject } from "react"
-import { Utils, type Earth } from "@anstec/earth"
+import { type Earth } from "@anstec/earth"
 import { useEarth } from "@anstec/earth-react"
 
 export default (): FC => {
   const containerRef = useRef<HTMLDivElement | null>(null)
-  const id = useRef<string>(Utils.uuid())
-  const earthRef: RefObject<Earth | null> = useEarth(containerRef, id.current)
+  const earthRef: RefObject<Earth | null> = useEarth(containerRef)
 
   useEffect(() => {
     if (!earthRef.current) return
